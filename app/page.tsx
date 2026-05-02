@@ -317,6 +317,14 @@ export default function Home() {
                 <input id="name" name="name" type="text" placeholder="你的称呼" />
               </div>
               <div className="field-group">
+                <label htmlFor="pet-gender">宠物性别</label>
+                <select id="pet-gender" name="petGender" defaultValue="暂不确定">
+                  <option>公</option>
+                  <option>母</option>
+                  <option>暂不确定</option>
+                </select>
+              </div>
+              <div className="field-group">
                 <label htmlFor="time">预约时间</label>
                 <select id="time" name="time" defaultValue="今天 10:00 - 12:00">
                   <option>今天 10:00 - 12:00</option>
