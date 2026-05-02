@@ -36,6 +36,57 @@ const storySlides = [
   },
 ];
 
+const petTypes = [
+  {
+    name: "狗狗",
+    note: "主粮、洗护、牵引和口腔护理",
+    accent: "warm",
+    image: "/assets/carousel/samoyed-care.png",
+  },
+  {
+    name: "猫咪",
+    note: "猫粮、猫砂、化毛和互动玩具",
+    accent: "mint",
+    image: "/assets/carousel/pet-food.png",
+  },
+  {
+    name: "兔兔",
+    note: "牧草、磨牙、脚垫和笼具配件",
+    accent: "rose",
+    image: "/assets/carousel/grooming-care.png",
+  },
+  {
+    name: "仓鼠",
+    note: "浴沙、垫料、跑轮和小窝用品",
+    accent: "sun",
+    image: "/assets/carousel/toys-accessories.png",
+  },
+  {
+    name: "鹦鹉",
+    note: "谷物、站架、清洁和益智玩具",
+    accent: "sky",
+    image: "/assets/carousel/toys-accessories.png",
+  },
+  {
+    name: "龟龟",
+    note: "龟粮、水质护理和晒台小件",
+    accent: "fern",
+    image: "/assets/carousel/pet-food.png",
+  },
+  {
+    name: "豚鼠",
+    note: "牧草、维生素、垫料和梳理用品",
+    accent: "clay",
+    image: "/assets/carousel/grooming-care.png",
+  },
+  {
+    name: "雪貂",
+    note: "高蛋白主粮、除味和安全玩具",
+    accent: "ink",
+    image: "/assets/carousel/samoyed-care.png",
+  },
+];
+
 const products = [
   {
     src: "/assets/carousel/samoyed-care.png",
@@ -108,6 +159,7 @@ export default function Home() {
           </a>
           <div className="nav-links">
             <a href="#menu">产品</a>
+            <a href="#pets">宠物类型</a>
             <a href="#story">护理</a>
             <a href="#visit">到店</a>
             <a className="nav-cta" href="#reserve">
@@ -139,7 +191,7 @@ export default function Home() {
             <div className="eyebrow">Pet Care Store</div>
             <h1>爪爪星球</h1>
             <p className="hero-copy">
-              精选主粮、温和洗护和耐玩的日常配件，为猫狗的每一次到店都准备得更舒服一点。
+              精选主粮、温和洗护和耐玩的日常配件，为猫狗、小宠和鸟龟的每一次到店都准备得更舒服一点。
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#menu">
@@ -190,7 +242,7 @@ export default function Home() {
                 <div className="section-kicker">In Store Picks</div>
                 <h2>主粮、洗护和玩具配件。</h2>
               </div>
-              <p>按猫狗年龄、体型和生活习惯挑选店内商品，日常补货和护理预约都能一次安排好。</p>
+              <p>按不同宠物的年龄、体型和生活习惯挑选店内商品，日常补货和护理预约都能一次安排好。</p>
             </div>
 
             <div className="menu-grid">
@@ -203,6 +255,38 @@ export default function Home() {
                       <span className="price">{product.price}</span>
                     </div>
                     <p>{product.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="pets" className="pet-types" aria-label="宠物类型动画轮播">
+          <div className="section-inner">
+            <div className="section-heading pet-types-heading">
+              <div>
+                <div className="section-kicker">Pet Types</div>
+                <h2>更多宠物，也能被认真照顾。</h2>
+              </div>
+              <p>从常见猫狗到兔兔、仓鼠、鹦鹉和龟龟，店内按品类准备基础用品和护理建议。</p>
+            </div>
+          </div>
+
+          <div className="pet-type-carousel">
+            <div className="pet-type-track">
+              {[...petTypes, ...petTypes].map((pet, petIndex) => (
+                <article
+                  className={`pet-type-card pet-type-card-${pet.accent}`}
+                  aria-hidden={petIndex >= petTypes.length}
+                  key={`${pet.name}-${petIndex}`}
+                >
+                  <div className="pet-type-image">
+                    <Image src={pet.image} alt="" fill sizes="180px" />
+                  </div>
+                  <div>
+                    <h3>{pet.name}</h3>
+                    <p>{pet.note}</p>
                   </div>
                 </article>
               ))}
@@ -271,8 +355,8 @@ export default function Home() {
               </p>
               <div className="feature-list" aria-label="宠物店特色">
                 <div className="feature">
-                  <strong>3类</strong>
-                  <span>核心产品专区</span>
+                  <strong>8类</strong>
+                  <span>常见宠物用品</span>
                 </div>
                 <div className="feature">
                   <strong>10:00</strong>
@@ -325,6 +409,14 @@ export default function Home() {
                 </select>
               </div>
               <div className="field-group">
+                <label htmlFor="pet-type">宠物类型</label>
+                <select id="pet-type" name="petType" defaultValue="狗狗">
+                  {petTypes.map((pet) => (
+                    <option key={pet.name}>{pet.name}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="field-group">
                 <label htmlFor="time">预约时间</label>
                 <select id="time" name="time" defaultValue="今天 10:00 - 12:00">
                   <option>今天 10:00 - 12:00</option>
@@ -352,7 +444,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footer-inner">
           <span>爪爪星球 Pet Care</span>
-          <span>宠物主粮 / 温和洗护 / 玩具配件</span>
+          <span>猫狗小宠 / 温和洗护 / 玩具配件</span>
         </div>
       </footer>
     </>

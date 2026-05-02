@@ -392,6 +392,135 @@ h3 {
   font-size: 14px;
 }
 
+.pet-types {
+  overflow: hidden;
+  background: #fffaf2;
+}
+
+.pet-types-heading {
+  margin-bottom: 30px;
+}
+
+.pet-type-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pet-type-carousel::before,
+.pet-type-carousel::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: max(28px, calc((100vw - 1160px) / 2 + 34px));
+  pointer-events: none;
+}
+
+.pet-type-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, #fffaf2 10%, rgba(255, 250, 242, 0));
+}
+
+.pet-type-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, #fffaf2 10%, rgba(255, 250, 242, 0));
+}
+
+.pet-type-track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  padding: 2px 16px 12px;
+  animation: pet-type-marquee 34s linear infinite;
+}
+
+.pet-type-carousel:hover .pet-type-track {
+  animation-play-state: paused;
+}
+
+.pet-type-card {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: center;
+  width: 294px;
+  min-height: 130px;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--surface);
+  box-shadow: 0 12px 28px rgba(24, 32, 29, 0.08);
+}
+
+.pet-type-card-warm {
+  border-top: 4px solid #c56f4e;
+}
+
+.pet-type-card-mint {
+  border-top: 4px solid #5f9f8b;
+}
+
+.pet-type-card-rose {
+  border-top: 4px solid #c16c7a;
+}
+
+.pet-type-card-sun {
+  border-top: 4px solid #d3a03f;
+}
+
+.pet-type-card-sky {
+  border-top: 4px solid #4e8fa8;
+}
+
+.pet-type-card-fern {
+  border-top: 4px solid #708b75;
+}
+
+.pet-type-card-clay {
+  border-top: 4px solid #a9694d;
+}
+
+.pet-type-card-ink {
+  border-top: 4px solid #3d4641;
+}
+
+.pet-type-image {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #f0eadf;
+}
+
+.pet-type-image img {
+  object-fit: cover;
+}
+
+.pet-type-card h3 {
+  margin-bottom: 6px;
+  font-size: 21px;
+}
+
+.pet-type-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+@keyframes pet-type-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .story {
   color: #fff;
   background: #18201d;
@@ -660,6 +789,10 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .pet-type-card {
+    width: 272px;
+  }
+
   .story-carousel {
     order: 2;
     min-height: 360px;
@@ -718,6 +851,32 @@ textarea:focus {
 
   .story-carousel {
     min-height: 280px;
+  }
+
+  .pet-type-track {
+    gap: 12px;
+    animation-duration: 42s;
+  }
+
+  .pet-type-card {
+    grid-template-columns: 72px minmax(0, 1fr);
+    width: 244px;
+    min-height: 124px;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .pet-type-image {
+    width: 72px;
+    height: 72px;
+  }
+
+  .pet-type-card h3 {
+    font-size: 19px;
+  }
+
+  .pet-type-card p {
+    font-size: 13px;
   }
 
   .hours-row,
