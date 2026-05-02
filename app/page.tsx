@@ -418,11 +418,11 @@ export default function Home() {
               </div>
               <div className="field-group">
                 <label htmlFor="time">预约时间</label>
-                <select id="time" name="time" defaultValue="今天 10:00 - 12:00">
+                <select id="time" name="time" defaultValue="明天 12:00">
+                  <option>明天 12:00</option>
                   <option>今天 10:00 - 12:00</option>
                   <option>今天 14:00 - 16:00</option>
                   <option>今天 18:00 - 20:00</option>
-                  <option>明天上午</option>
                 </select>
               </div>
               <div className="field-group">
